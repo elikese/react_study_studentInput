@@ -41,31 +41,30 @@ function App() {
 
   return (
     <>
-      <StudentInfo
-        studentInfo={student.name}
-        title={"이름"} />
-      <StudentInfo
-        studentInfo={student.age}
-        title={"나이"} />
-      <StudentInfo
-        studentInfo={student.address}
-        title={"주소"} />
+      <StudentInfo studentInfo={student.name} title={"이름"} />
+      <StudentInfo studentInfo={student.age} title={"나이"} />
+      <StudentInfo studentInfo={student.address} title={"주소"} />
 
       <InfoInput
         setInputValues={setInputValues}
         value={inputValues.name}
-        title={"이름"} />
+        title={"이름"}
+      />
       <InfoInput
         setInputValues={setInputValues}
         value={inputValues.age}
-        title={"나이"} />
+        title={"나이"}
+      />
       <InfoInput
         setInputValues={setInputValues}
         value={inputValues.address}
-        title={"주소"} />
+        title={"주소"}
+      />
 
-      <button onClick={handleOnOk}>확인</button>
-      <button onClick={handleOnClean}>비우기</button>
+      <infoButtons>
+        <button onClick={handleOnOk}>확인</button>
+        <button onClick={handleOnClean}>비우기</button>
+      </infoButtons>
     </>
   );
 }

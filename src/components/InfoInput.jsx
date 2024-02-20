@@ -9,6 +9,7 @@ function InfoInput({ setInputValues, title }) {
       const { name, value } = e.target;
       setInputValues((values) => ({ ...values, [change.get(name)]: value }));
     }
+    
     return (
       <>
         <input type='text' onChange={handleChangeInput} name={title} placeholder={title} />
