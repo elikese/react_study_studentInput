@@ -9,20 +9,21 @@ function StudentInfo({ title, studentInfo }) {
   )
 }
 
-function Infoinput({ setStudent, title }) {
+function Infoinput({ setInputValues, title }) {
 
   const handleChangeInput = (e) => {
-    if (title === "이름") {
-      setStudent((student) => ({ ...student, name: e.target.value }));
-    } else if (title === "나이") {
-      setStudent((student) => ({ ...student, age: e.target.value }));
-    } else if (title === "주소") {
-      setStudent((student) => ({ ...student, address: e.target.value }));
-    }
+    const change = new Map([
+      ['이름', 'name'],
+      ['나이', 'age'],
+      ['주소', 'address']
+    ]);
+    const { name, value } = e.target;
+    console.log([change.get(name)]);
+    setInputValues((values) => ({ ...values, [change.get(name)]: value }));
   }
   return (
     <>
-      <input type='text' onChange={handleChangeInput} placeholder={title} />
+      <input type='text' onChange={handleChangeInput} name={title} placeholder={title} />
     </>
   )
 }
@@ -34,6 +35,7 @@ function App() {
     age: "",
     address: ""
   }
+
   const [student, setStudent] = useState(sutdentObj);
   const [inputValues, setInputValues] = useState(sutdentObj);
   const [refresh, setRefresh] = useState(false);
@@ -86,15 +88,15 @@ function App() {
         title={"주소"} />
 
       <Infoinput
-        setStudent={setInputValues}
+        setInputValues={setInputValues}
         value={inputValues.name}
         title={"이름"} />
       <Infoinput
-        setStudent={setInputValues}
+        setInputValues={setInputValues}
         value={inputValues.age}
         title={"나이"} />
       <Infoinput
-        setStudent={setInputValues}
+        setInputValues={setInputValues}
         value={inputValues.address}
         title={"주소"} />
 
